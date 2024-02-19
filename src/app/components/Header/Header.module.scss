@@ -1,0 +1,28 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    z-index: 20;
+}
+
+.back {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 2px 8px;
+    background-color: #7b7b7b;
+    color: #ffffff;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .back {
+        flex-direction: column;    
+    }
+}

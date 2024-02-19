@@ -1,0 +1,55 @@
+.details {
+    padding: 20px;
+
+    &Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .detailsHeader {
+        flex-direction: column;    
+    }
+}
+
+.favButton {
+    padding: 10px 20px;
+    background-color: #510e0e;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.films {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    border-radius: 16px;
+    margin: 5px;
+    padding: 3px 10px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.table {
+    display: table;
+    margin-bottom: 30px;
+
+    &Row {
+        display: table-row;
+        padding: 5px 15px;
+        
+    }
+
+    &Cell {
+        display: table-cell;
+        padding: 2px 10px;
+        width: 50%;
+    }
+}
