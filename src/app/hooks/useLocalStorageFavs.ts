@@ -21,15 +21,7 @@ export const useLocalStorageFavs = (
     });
   
     useEffect(() => {
-        console.log('value', value);
-        
-
         window.localStorage.setItem(key, JSON.stringify(value));
-        // try {
-        //     window.localStorage.setItem(key, JSON.stringify(value));
-        // } catch {
-        //     console.error(`Error setting localStorage`);
-        // }
     }, [value, key]);
   
     return [value, setValue] as const;

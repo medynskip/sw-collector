@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 
@@ -20,6 +21,19 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            
+            <Head>
+                <link
+                    rel="preload"
+                    href="/card-bkg.webp"
+                    as="image"
+                />
+                <link
+                    rel="preload"
+                    href="/card-bkg.jpg"
+                    as="image"
+                />
+            </Head>
             <body className={inter.className}>
                 <ReactQueryProvider>
                     <Header />

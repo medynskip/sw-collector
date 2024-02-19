@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from 'next/link';
 
 import styles from './Card.module.scss';
+import CardImage from "../CardImage";
 
 const Card = ({ name, url, path }: { 
     name: string, 
@@ -19,7 +20,6 @@ const Card = ({ name, url, path }: {
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
-                // delay: 0.1,
                 duration: 0.2
             }
         }>
@@ -29,7 +29,8 @@ const Card = ({ name, url, path }: {
                     query: `id=${last}`,
                 }} 
                 className={styles.card}
-            >
+            > 
+                <CardImage description={name} />
                 <h3>
                     {name}
                 </h3>
