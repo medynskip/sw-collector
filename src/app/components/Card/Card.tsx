@@ -29,12 +29,7 @@ const Card: FC<IProps> = ({ name, url, path, isFavourite }) => {
     return (
         <motion.div 
             whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, scale: 0.75 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.2
-            }
-        }>
+        >
             <Link 
                 href={{
                     pathname: `${path}`,
@@ -42,13 +37,21 @@ const Card: FC<IProps> = ({ name, url, path, isFavourite }) => {
                 }} 
                 className={styles.card}
             > 
-                <CardImage description={name} />
-                <h3>
-                    {name}
-                </h3>
-                {isClient ? (
-                    <FavButton isFavourite={isFavourite} />
-                ) : null}
+                <motion.div 
+                    initial={{ opacity: 0}}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 0.2
+                    }
+                }>
+                    <CardImage description={name} />
+                    <h3>
+                        {name}
+                    </h3>
+                    {isClient ? (
+                        <FavButton isFavourite={isFavourite} />
+                    ) : null}
+                </motion.div>
             </Link>
         </motion.div>
     )
