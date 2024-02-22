@@ -47,9 +47,11 @@ const CardList = ({ initialData }: {
         results.map(({ name, url}, i) => {
             const normalizedName: string = normalizeName(name);
 
+            const isFavourite: boolean = value?.includes(normalizedName);
+
             return (
                 <li key={`${name}-${i}`}>
-                    <Card name={name} url={url} path={normalizedName}/>
+                    <Card name={name} url={url} path={normalizedName} isFavourite={isFavourite} />
                 </li>
             )
         })
@@ -63,7 +65,7 @@ const CardList = ({ initialData }: {
             
             {isFetchingNextPage ? (
                 <Loader />
-            ) : null}
+                ) : null}
             <div ref={setRef}/>
         </>
     );

@@ -17,7 +17,6 @@ export const useLocalStorageFavs = (
         window.localStorage.setItem(key, JSON.stringify([]));
 
         return [];
-        
     });
   
     useEffect(() => {

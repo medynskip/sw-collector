@@ -5,7 +5,7 @@ import CardList from "./components/CardList";
 import { getItemsList } from "./helpers/suppliers";
 
 export default async function Page() {
-    const initialParams = {
+    const initialParams: { type: string } = {
       type: 'people',
     };
 
