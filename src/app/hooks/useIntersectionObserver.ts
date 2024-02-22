@@ -26,5 +26,5 @@ export const useIntersectionObserver = (
         }
     }, [observerRef, callback]);
 
-    return [setRef];
+    return [setRef] as const;
 }

@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import styles from './FavButton.module.scss';
 
-const FavButton = ({ isFavourite }: { isFavourite: boolean}) => {
+const FavButton: FC<{ isFavourite: boolean}> = ({ isFavourite }) => {
     return (
         <div className={styles.favorite}>
             {isFavourite ? (
@@ -12,7 +13,7 @@ const FavButton = ({ isFavourite }: { isFavourite: boolean}) => {
 
 export default FavButton;
 
-const NativeIcon = () => {
+const NativeIcon: FC = () => {
     return (
         <svg height="48px" width="48px" viewBox="0 0 28.673 28.673" xmlSpace="preserve">
             <g>

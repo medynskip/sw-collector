@@ -1,10 +1,11 @@
 'use client'
 
+import { FC } from 'react';
 import { usePathname, useRouter } from 'next/navigation'
 
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header: FC = () => {
     const router = useRouter();
 
     const pathname = usePathname();

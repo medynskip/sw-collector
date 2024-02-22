@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from "react";
+import { useCallback, useMemo, FC } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { getItemsList } from "@/app/helpers/suppliers";
@@ -13,10 +13,8 @@ import Card from './../Card';
 import { normalizeName } from "@/app/helpers/hero";
 import Loader from "../Loader";
 
-const CardList = ({ initialData }: { 
-    initialData: IResponse 
-}) => {
-    const [value, ] = useLocalStorageFavs('fav-heroes');
+const CardList: FC<{ initialData: IResponse }> = ({ initialData }) => {
+    const [favourites, ] = useLocalStorageFavs('fav-heroes');
 
     const { data, fetchNextPage, isFetchingNextPage, hasNextPage} = useInfiniteQuery({
         queryKey: ['heroes'],
@@ -43,19 +41,21 @@ const CardList = ({ initialData }: {
         fetchNextPage();
     }, [hasNextPage, fetchNextPage]));
 
-    const items = data?.pages.map(({ results }) => 
-        results.map(({ name, url}, i) => {
-            const normalizedName: string = normalizeName(name);
+    const items = useMemo(() => {
+        return data?.pages.map(({ results }) => 
+            results.map(({ name, url}, i) => {
+                const normalizedName: string = normalizeName(name);
 
-            const isFavourite: boolean = value?.includes(normalizedName);
+                const isFavourite: boolean = favourites?.includes(normalizedName);
 
-            return (
-                <li key={`${name}-${i}`}>
-                    <Card name={name} url={url} path={normalizedName} isFavourite={isFavourite} />
-                </li>
-            )
-        })
-    );
+                return (
+                    <li key={`${name}-${i}`}>
+                        <Card name={name} url={url} path={normalizedName} isFavourite={isFavourite} />
+                    </li>
+                )
+            })
+        )
+    }, [data.pages, favourites]);
         
     return (
         <>

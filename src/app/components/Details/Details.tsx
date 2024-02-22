@@ -9,12 +9,15 @@ import { useLocalStorageFavs } from '@/app/hooks/useLocalStorageFavs';
 import { IResult } from '@/app/types/types';
 import { normalizeName } from '@/app/helpers/hero';
 import Loader from '../Loader';
+import { FC } from 'react';
 
-const Details = ({ initialData, id }: { 
+interface IProps { 
     initialData: IResult,
     id: string
-}) => {
-    const [value, setValue] = useLocalStorageFavs('fav-heroes');
+}
+
+const Details: FC<IProps> = ({ initialData, id }) => {
+    const [favourites, setFavourites] = useLocalStorageFavs('fav-heroes');
 
     const { data, isFetching } = useQuery({
         queryKey: [`hero-&${id}`],
@@ -24,16 +27,16 @@ const Details = ({ initialData, id }: {
     })
 
     const normalizedName: string = normalizeName(data?.name)
-    const isFavourite: boolean = value?.includes(normalizedName);
+    const isFavourite: boolean = favourites?.includes(normalizedName);
     
     const handleFavClick = (): void => {
         if (!isFavourite) {
-            setValue((prev: string[]) => [ ...prev, normalizedName]);
+            setFavourites((prev: string[]) => [ ...prev, normalizedName]);
 
             return;
         }
 
-        setValue((prev: string[]) => prev.filter((name) => name !== normalizedName));
+        setFavourites((prev: string[]) => prev.filter((name) => name !== normalizedName));
     }
 
     if (isFetching) {

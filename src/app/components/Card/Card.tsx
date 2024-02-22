@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 
 import { motion } from "framer-motion";
 import Link from 'next/link';
@@ -9,12 +9,14 @@ import styles from './Card.module.scss';
 import CardImage from "../CardImage";
 import FavButton from "../FavButton";
 
-const Card = ({ name, url, path, isFavourite }: { 
+interface IProps {
     name: string, 
     url: string, 
     path: string, 
     isFavourite: boolean,
-}) => {
+}
+
+const Card: FC<IProps> = ({ name, url, path, isFavourite }) => {
     const segments = new URL(url).pathname.split('/');
     const last = segments.pop() || segments.pop(); 
 

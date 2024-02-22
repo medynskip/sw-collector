@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import styles from './CardImage.module.scss';
 
-const CardImage = ({ description }: { description: string}) => {
+const CardImage: FC<{ description: string }> = ({ description }) => {
     return (
         <picture className={styles.picture}>
             <source srcSet="/card-bkg.webp" />
